@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
+import Pokeball from '../pokeball.png';
 class Post extends Component{
     state = {
         user: null
@@ -20,6 +20,7 @@ class Post extends Component{
             <div className = "card">
                 
                 <div className = "center">
+                    <img src = {Pokeball} alt = "a pokeball"/>
                     <p className = "title">User Id:{this.state.user.postId}</p>
                     <p>User Name:{this.state.user.name}</p>
                     <p>User Email:{this.state.user.email}</p>
@@ -29,7 +30,7 @@ class Post extends Component{
             <div className = "center"> Loading User ...</div>
         );
         return(
-            <div className = "container">
+            <div className = "container post">
                 {userShow}
             </div>
         );

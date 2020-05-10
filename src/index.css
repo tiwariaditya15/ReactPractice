@@ -23,3 +23,13 @@ code {
 .home .post{
   overflow: hidden;
 }
+
+.post .card img{
+  position: absolute;
+  left: -100px;
+  opacity: 0.6;
+}
+
+.post .card{
+  overflow: hidden;
+}
