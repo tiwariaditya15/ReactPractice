@@ -2,9 +2,9 @@ import React from 'react';
 
 function Contact(){
     return(
-        <div className = "">
+        <div className = "App" align = "center">
             <h3>Contact</h3>
-            <p>Lorem Espum</p>
+            
         </div>
     );
 }

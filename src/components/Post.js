@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+
 class Post extends Component{
     state = {
         user: null
@@ -17,6 +18,7 @@ class Post extends Component{
     render(){
         const userShow = this.state.user ? (
             <div className = "card">
+                
                 <div className = "center">
                     <p className = "title">{this.state.user.postId}</p>
                     {this.state.user.name}
