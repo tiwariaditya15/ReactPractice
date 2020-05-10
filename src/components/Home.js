@@ -12,7 +12,7 @@ class Home extends Component{
                 console.log(response);
             
                 this.setState({
-                    users: response.data.slice(0, 10)
+                    users: response.data.slice(0, 20)
                 });
             
             });

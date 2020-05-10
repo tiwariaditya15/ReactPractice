@@ -20,9 +20,9 @@ class Post extends Component{
             <div className = "card">
                 
                 <div className = "center">
-                    <p className = "title">{this.state.user.postId}</p>
-                    {this.state.user.name}
-                    {this.state.user.email}
+                    <p className = "title">User Id:{this.state.user.postId}</p>
+                    <p>User Name:{this.state.user.name}</p>
+                    <p>User Email:{this.state.user.email}</p>
                 </div>
             </div>
         ) : (
