@@ -1,29 +1,25 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Pokeball from '../pokeball.png';
+import { connect } from 'react-redux';
 class Post extends Component{
-    state = {
-        user: null
-    }
-    componentDidMount(){
-        let id = this.props.match.params.pathId;
-        axios.get('https://jsonplaceholder.typicode.com/comments/' + id)
-        .then(res => {
-            this.setState({
-                user: res.data
-            });
-        });
-        
+    handleDelete = () => {
+        this.props.deleteUser(this.props.user.id);
+        this.props.history.push("/");
     }
     render(){
-        const userShow = this.state.user ? (
+        console.log(this.props);
+        const userShow = this.props.user ? (
             <div className = "card">
                 
                 <div className = "center">
                     <img src = {Pokeball} alt = "a pokeball"/>
-                    <p className = "title">User Id:{this.state.user.postId}</p>
-                    <p>User Name:{this.state.user.name}</p>
-                    <p>User Email:{this.state.user.email}</p>
+                    <p className = "title">User Id:{this.props.user.id}</p>
+                    <p>User Name:{this.props.user.name}</p>
+                    <p>User Email:{this.props.user.email}</p>
+                </div>
+                <div className = "center"> 
+                    <button className = "btn red" onClick = {this.handleDelete}> Delete User </button>
                 </div>
             </div>
         ) : (
@@ -36,4 +32,18 @@ class Post extends Component{
         );
     }
 }
-export default Post;
+
+
+const mapStateToProps = (state, ownProps) => {
+        let id = ownProps.match.params.pathId;
+        return{
+            user: state.users.find(user => user.id == id)
+        }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteUser: (id) => { dispatch({type: 'DELETE_USER', id: id}) }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Post);

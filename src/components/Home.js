@@ -1,26 +1,12 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Pokeball from '../pokeball.png';
-class Home extends Component{
-    state = {
-        users: []
-    }
-    componentDidMount(){
-            axios.get('https://jsonplaceholder.typicode.com/comments')
-            .then(response => {
-                console.log(response);
-            
-                this.setState({
-                    users: response.data.slice(0, 20)
-                });
-            
-            });
+import { connect } from 'react-redux';
 
-            
-    }
+class Home extends Component{
 render(){
-    const { users } = this.state;
+    console.log(this.props);
+    const { users } = this.props;
     const usersList = users.length ? (
         users.map(user => {
             return (
@@ -45,4 +31,9 @@ render(){
 }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    return{
+        users: state.users
+    }
+}
+export default connect(mapStateToProps)(Home);
