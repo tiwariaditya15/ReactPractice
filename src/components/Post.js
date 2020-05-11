@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Pokeball from '../pokeball.png';
 import { connect } from 'react-redux';
+import { deleteAction } from '../actions/deleteAction';
 class Post extends Component{
     handleDelete = () => {
         this.props.deleteUser(this.props.user.id);
@@ -43,7 +44,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteUser: (id) => { dispatch({type: 'DELETE_USER', id: id}) }
+        deleteUser: (id) => { dispatch(deleteAction(id)) }
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Post);
